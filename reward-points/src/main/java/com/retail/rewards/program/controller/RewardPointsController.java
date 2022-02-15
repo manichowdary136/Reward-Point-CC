@@ -29,7 +29,6 @@ public class RewardPointsController {
 	@PostMapping(path = "/getRewardsTotalByCustomerMonths")
 	public List<ResponseSummary> getRewardsTotalByCustomerMonths(@RequestBody List<RewardPointsRequest> request) {
 		return service.calculateRewardsTotalByCustomerMonths(request);
-
 	}
 
 	@PostMapping(path = "/getRewardsTotalByCustomer")

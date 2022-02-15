@@ -80,18 +80,22 @@ public class RewardPointsService {
 		request.forEach(data -> {
 			RewardPointsResponse response = new RewardPointsResponse();
 			Integer points = 0;
+			Integer over100 =0;
+			if(data.getAmount()>100){
+				over100 = data.getAmount() - 100;
+			}
 
-			Integer over100 = data.getAmount() - 100;
 
 			if (over100 > 0) {
 				// A customer receives 2 points for every dollar spent over $100 in each
 				// transaction
 				points += (over100 * 2);
+				points += 50;
 			}
 
-			if (data.getAmount() > 50) {
+			if (data.getAmount() > 50 && data.getAmount()<=100) {
 				// plus 1 point for every dollar spent over $50 in each transaction
-				points += 50;
+				points = points+(data.getAmount()-50);
 			}
 			String month = null;
 			try {
